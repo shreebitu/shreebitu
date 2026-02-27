@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ModFire.in – Virtual Android & Custom ROM Downloads</title>
+<meta name="description" content="Download virtual Android apps, custom ROMs, and modded APKs. Your trusted hub for Android power users, modders, and gamers.">
+<meta name="keywords" content="virtual android apps, android clone apps, custom rom download, android virtualization, modded android tools, multi instance android, virtual machine android, VMOS Pro, VPhoneGaGa">
+<link rel="canonical" href="https://modfire.in/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="ModFire.in – Virtual Android & Custom ROM Downloads">
+<meta property="og:description" content="Your ultimate hub for Virtual Android apps, Custom ROMs, and modded APKs for power users, gamers, and modders.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://modfire.in/">
+<meta property="og:image" content="https://modfire.in/og-image.jpg">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ModFire.in – Virtual Android & Custom ROMs">
+<meta name="twitter:description" content="Download Virtual Android apps, Custom ROMs, and modded APKs safely.">
+
+<!-- Schema Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "ModFire.in",
+  "url": "https://modfire.in",
+  "description": "Your ultimate hub for Virtual Android apps, Custom ROMs, and modded APKs",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://modfire.in/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #09090f;
+    --bg2: #0f0f1a;
+    --bg3: #141428;
+    --card: #111120;
+    --card-border: rgba(99,102,241,0.18);
+    --accent: #6366f1;
+    --accent2: #f59e0b;
+    --accent3: #22d3ee;
+    --text: #e8e8f0;
+    --muted: #8888aa;
+    --white: #ffffff;
+    --radius: 16px;
+    --radius-sm: 10px;
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --glow: 0 0 40px rgba(99,102,241,0.25);
+    --glow2: 0 0 40px rgba(245,158,11,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE TEXTURE ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 18px 0;
+    background: rgba(9,9,15,0.82);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(99,102,241,0.1);
+    transition: all 0.3s;
+  }
+  nav.scrolled { padding: 12px 0; }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+  .logo {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -0.5px;
+    text-decoration: none;
+    background: linear-gradient(135deg, #6366f1, #f59e0b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .logo span { -webkit-text-fill-color: rgba(255,255,255,0.9); }
+
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: var(--white) !important;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: 600 !important;
+    transition: opacity 0.2s, transform 0.2s !important;
+  }
+  .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 65px; left: 0; right: 0;
+    background: rgba(9,9,15,0.97);
+    border-bottom: 1px solid var(--card-border);
+    padding: 24px;
+    z-index: 999;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: var(--text); text-decoration: none; font-size: 1.1rem; font-weight: 500; }
+
+  /* ─── HERO ─── */
+  .hero {
+    padding: 160px 0 100px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(99,102,241,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(99,102,241,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 800px; height: 600px;
+    background: radial-gradient(ellipse, rgba(99,102,241,0.15) 0%, rgba(245,158,11,0.06) 40%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(99,102,241,0.12);
+    border: 1px solid rgba(99,102,241,0.3);
+    color: #a5b4fc;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: #22d3ee;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .hero h1 .brand {
+    background: linear-gradient(135deg, #6366f1 0%, #f59e0b 60%, #f97316 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--muted);
+    max-width: 600px;
+    margin: 0 auto 44px;
+    font-weight: 400;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+    margin-bottom: 72px;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: var(--white);
+    padding: 14px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 24px rgba(99,102,241,0.35);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(99,102,241,0.5);
+  }
+
+  .btn-secondary {
+    background: rgba(255,255,255,0.04);
+    color: var(--text);
+    padding: 14px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 1px solid rgba(255,255,255,0.12);
+    cursor: pointer;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.25);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+
+  .hero-stat { text-align: center; }
+  .hero-stat .num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #6366f1, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-stat .label { font-size: 0.8rem; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.6px; }
+
+  /* ─── SECTION BASE ─── */
+  section { padding: 100px 0; position: relative; }
+
+  .section-label {
+    display: inline-block;
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .section-sub { color: var(--muted); font-size: 1.05rem; max-width: 560px; line-height: 1.7; }
+
+  .section-header { margin-bottom: 60px; }
+  .section-header.centered { text-align: center; }
+  .section-header.centered .section-sub { margin: 0 auto; }
+
+  /* ─── APPS SECTION ─── */
+  .apps-section { background: var(--bg2); }
+
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .app-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 24px;
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+  .app-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent3));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .app-card:hover { border-color: rgba(99,102,241,0.4); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.4), var(--glow); }
+  .app-card:hover::before { opacity: 1; }
+
+  .app-icon {
+    width: 60px; height: 60px;
+    border-radius: 14px;
+    object-fit: cover;
+    background: linear-gradient(135deg, rgba(99,102,241,0.3), rgba(34,211,238,0.2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+
+  .app-name {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+  }
+  .app-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; flex: 1; }
+  .app-version {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    color: #22d3ee;
+    font-weight: 600;
+  }
+  .app-version::before { content: 'v'; opacity: 0.6; }
+
+  .btn-download {
+    background: rgba(99,102,241,0.15);
+    border: 1px solid rgba(99,102,241,0.35);
+    color: #a5b4fc;
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+  .btn-download:hover { background: rgba(99,102,241,0.3); color: var(--white); }
+
+  /* ─── ROMS ─── */
+  .roms-section { background: var(--bg); }
+  .roms-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 60px;
+  }
+  .rom-visual {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .rom-visual-glow {
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(245,158,11,0.2), transparent 70%);
+  }
+  .rom-phone {
+    width: 160px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .phone-frame {
+    background: var(--bg3);
+    border: 2px solid rgba(255,255,255,0.15);
+    border-radius: 28px;
+    padding: 20px 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  }
+  .phone-screen {
+    background: linear-gradient(160deg, #1a1a35, #0f0f20);
+    border-radius: 18px;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.7rem;
+    color: #22d3ee;
+    font-weight: 600;
+  }
+  .phone-screen .android-logo {
+    font-size: 3rem;
+    margin-bottom: 8px;
+  }
+
+  .rom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .rom-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 28px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .rom-card:hover { transform: translateY(-4px); border-color: rgba(245,158,11,0.35); box-shadow: var(--glow2); }
+  .rom-badge {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: rgba(245,158,11,0.15);
+    border: 1px solid rgba(245,158,11,0.3);
+    color: #f59e0b;
+    padding: 3px 10px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .rom-name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+  .rom-meta { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
+  .rom-meta-item { display: flex; gap: 8px; font-size: 0.82rem; }
+  .rom-meta-label { color: var(--muted); min-width: 80px; }
+  .rom-meta-val { color: var(--text); font-weight: 500; }
+
+  /* ─── WHY VIRTUAL ─── */
+  .why-section { background: var(--bg2); }
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .benefit-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 32px;
+    transition: all 0.3s;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .benefit-card:hover { border-color: rgba(99,102,241,0.4); transform: translateX(4px); }
+
+  .benefit-icon {
+    width: 52px; height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+  .bi-1 { background: rgba(99,102,241,0.15); }
+  .bi-2 { background: rgba(34,211,238,0.12); }
+  .bi-3 { background: rgba(245,158,11,0.12); }
+  .bi-4 { background: rgba(16,185,129,0.12); }
+  .bi-5 { background: rgba(239,68,68,0.1); }
+
+  .benefit-text h3 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .benefit-text p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+  /* ─── HOW IT WORKS ─── */
+  .how-section { background: var(--bg); }
+  .steps-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    position: relative;
+  }
+  .steps-row::before {
+    content: '';
+    position: absolute;
+    top: 40px; left: 16%;
+    width: 68%;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(99,102,241,0.4), rgba(34,211,238,0.4));
+    z-index: 0;
+  }
+
+  .step-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 36px 28px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s;
+  }
+  .step-card:hover { border-color: rgba(99,102,241,0.4); transform: translateY(-6px); box-shadow: var(--glow); }
+
+  .step-num {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(34,211,238,0.1));
+    border: 2px solid rgba(99,102,241,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--accent);
+    margin: 0 auto 24px;
+  }
+  .step-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+  .step-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+  /* ─── ABOUT ─── */
+  .about-section { background: var(--bg2); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-accent-box {
+    background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(245,158,11,0.06));
+    border: 1px solid rgba(99,102,241,0.2);
+    border-radius: var(--radius);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-accent-box::after {
+    content: '🔥';
+    position: absolute;
+    bottom: 20px; right: 30px;
+    font-size: 80px;
+    opacity: 0.08;
+  }
+  .about-highlight {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #6366f1, #f59e0b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .about-accent-box p { color: var(--muted); font-size: 0.95rem; }
+  .about-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .tag {
+    background: rgba(99,102,241,0.12);
+    border: 1px solid rgba(99,102,241,0.25);
+    color: #a5b4fc;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+
+  /* ─── SEO CONTENT ─── */
+  .seo-section { background: var(--bg); }
+  .seo-content {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 48px;
+  }
+  .seo-content h2 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .seo-content p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .seo-content p:last-child { margin-bottom: 0; }
+  .seo-keywords { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .keyword-tag {
+    background: rgba(34,211,238,0.08);
+    border: 1px solid rgba(34,211,238,0.2);
+    color: #67e8f9;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  /* ─── FAQ ─── */
+  .faq-section { background: var(--bg2); }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 800px; margin: 0 auto; }
+
+  .faq-item {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+  .faq-q {
+    padding: 20px 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text);
+    user-select: none;
+    transition: color 0.2s;
+  }
+  .faq-q:hover { color: var(--white); }
+  .faq-icon {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: rgba(99,102,241,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.3s, background 0.2s;
+    font-size: 0.9rem;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); background: rgba(99,102,241,0.4); }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+    padding: 0 24px;
+  }
+  .faq-item.open .faq-a { max-height: 300px; padding: 0 24px 20px; }
+  .faq-divider { height: 1px; background: var(--card-border); margin: 0 24px; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--bg3);
+    border-top: 1px solid var(--card-border);
+    padding: 72px 0 40px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 56px;
+  }
+  .footer-brand .logo { font-size: 1.3rem; display: inline-block; margin-bottom: 16px; }
+  .footer-brand p { color: var(--muted); font-size: 0.88rem; line-height: 1.7; margin-bottom: 20px; }
+  .social-links { display: flex; gap: 12px; }
+  .social-link {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 1rem;
+    transition: all 0.2s;
+  }
+  .social-link:hover { background: rgba(99,102,241,0.2); border-color: rgba(99,102,241,0.4); color: #a5b4fc; }
+
+  .footer-col h4 {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col a { color: var(--muted); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--white); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 32px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .footer-copy { color: var(--muted); font-size: 0.82rem; }
+  .footer-disclaimer {
+    background: rgba(245,158,11,0.08);
+    border: 1px solid rgba(245,158,11,0.2);
+    border-radius: 10px;
+    padding: 16px 20px;
+    max-width: 540px;
+    font-size: 0.78rem;
+    color: rgba(245,158,11,0.8);
+    line-height: 1.6;
+  }
+  .footer-disclaimer strong { display: block; margin-bottom: 4px; }
+
+  /* ─── DIVIDER ─── */
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(99,102,241,0.3), transparent);
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .roms-intro { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .steps-row { grid-template-columns: 1fr; }
+    .steps-row::before { display: none; }
+    .hero { padding: 120px 0 80px; }
+    .hero h1 { letter-spacing: -1px; }
+    .hero-stats { gap: 32px; }
+    .seo-content { padding: 28px; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-btns { flex-direction: column; align-items: center; }
+    .benefits-grid { grid-template-columns: 1fr; }
+    .apps-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: rgba(99,102,241,0.4); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="logo">MOD<span style="-webkit-text-fill-color:inherit;background:none;color:inherit;">FIRE</span><span style="font-size:0.7em; -webkit-text-fill-color:rgba(245,158,11,0.9);background:none;">.IN</span></a>
+    <ul class="nav-links">
+      <li><a href="#apps">Virtual Apps</a></li>
+      <li><a href="#roms">Custom ROMs</a></li>
+      <li><a href="#why">Why Use</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#apps" class="nav-cta">Downloads</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#apps" onclick="closeMobileMenu()">Virtual Apps</a>
+  <a href="#roms" onclick="closeMobileMenu()">Custom ROMs</a>
+  <a href="#why" onclick="closeMobileMenu()">Why Use</a>
+  <a href="#about" onclick="closeMobileMenu()">About</a>
+  <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
+  <a href="#apps" style="color:#a5b4fc;font-weight:700;" onclick="closeMobileMenu()">⬇ Downloads</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="home">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="hero-badge">🔥 100+ Apps &amp; ROMs Available</div>
+    <h1>
+      Your Hub for<br>
+      <span class="brand">Virtual Android</span><br>
+      &amp; Custom ROMs
+    </h1>
+    <p>Download virtual Android apps, custom ROMs, and modded APKs. Trusted by developers, gamers, and modders worldwide.</p>
+    <div class="hero-btns">
+      <a href="#apps" class="btn-primary">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        Browse Virtual Apps
+      </a>
+      <a href="#roms" class="btn-secondary">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/></svg>
+        Download Custom ROMs
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">100+</div><div class="label">Apps &amp; ROMs</div></div>
+      <div class="hero-stat"><div class="num">50K+</div><div class="label">Downloads</div></div>
+      <div class="hero-stat"><div class="num">99%</div><div class="label">Safe &amp; Verified</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ─── FEATURED APPS ─── -->
+<section class="apps-section" id="apps">
+  <div class="container">
+    <div class="section-header centered fade-up">
+      <span class="section-label">Virtual Android Apps</span>
+      <h2 class="section-title">Top Virtual Android Apps</h2>
+      <p class="section-sub">Run multiple Android instances, test apps in isolation, or game with a virtual environment — download the best virtual Android apps here.</p>
+    </div>
+    <div class="apps-grid">
+
+      <div class="app-card fade-up">
+        <div class="app-icon" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);">VP</div>
+        <div>
+          <div class="app-name">VMOS Pro</div>
+          <div class="app-version">2.9.8</div>
+        </div>
+        <div class="app-desc">A powerful virtual machine app that runs full Android OS. Supports root, Google services, and custom ROM flashing within the VM.</div>
+        <a href="#" class="btn-download">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          Download APK
+        </a>
+      </div>
+
+      <div class="app-card fade-up">
+        <div class="app-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2);">PG</div>
+        <div>
+          <div class="app-name">VPhoneGaGa</div>
+          <div class="app-version">3.6.0</div>
+        </div>
+        <div class="app-desc">Feature-rich virtual Android environment with multi-instance support, root capabilities, and enhanced gaming performance.</div>
+        <a href="#" class="btn-download">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          Download APK
+        </a>
+      </div>
+
+      <div class="app-card fade-up">
+        <div class="app-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706);">TW</div>
+        <div>
+          <div class="app-name">Twoyi</div>
+          <div class="app-version">1.3.2</div>
+        </div>
+        <div class="app-desc">Open-source container-based virtual Android with a unique floating overlay UI. Lightweight and efficient for running secondary apps.</div>
+        <a href="#" class="btn-download">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          Download APK
+        </a>
+      </div>
+
+      <div class="app-card fade-up">
+        <div class="app-icon" style="background:linear-gradient(135deg,#10b981,#059669);">VM</div>
+        <div>
+          <div class="app-name">Virtual Master</div>
+          <div class="app-version">4.1.5</div>
+        </div>
+        <div class="app-desc">Advanced multi-account virtual Android solution with privacy isolation and seamless switching between virtual instances.</div>
+        <a href="#" class="btn-download">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          Download APK
+        </a>
+      </div>
+
+      <div class="app-card fade-up">
+        <div class="app-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626);">F1</div>
+        <div>
+          <div class="app-name">F1 VM</div>
+          <div class="app-version">2.2.1</div>
+        </div>
+        <div class="app-desc">High-performance virtual Android VM optimized for gaming with GPU acceleration support and low latency input handling.</div>
+        <a href="#" class="btn-download">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          Download APK
+        </a>
+      </div>
+
+      <div class="app-card fade-up">
+        <div class="app-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);">PO</div>
+        <div>
+          <div class="app-name">VPhoneOS</div>
+          <div class="app-version">1.8.0</div>
+        </div>
+        <div class="app-desc">Complete virtual phone OS running Android in a sandboxed environment. Full system-level customization with persistent storage.</div>
+        <a href="#" class="btn-download">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          Download APK
+        </a>
+      </div>
+
+      <div class="app-card fade-up">
+        <div class="app-icon" style="background:linear-gradient(135deg,#f97316,#ea580c);">X8</div>
+        <div>
+          <div class="app-name">x8 Sandbox</div>
+          <div class="app-version">5.3.0</div>
+        </div>
+        <div class="app-desc">Game-focused virtual Android with turbo speed mode, multi-instance gaming, script support and advanced emulation tweaks.</div>
+        <a href="#" class="btn-download">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          Download APK
+        </a>
+      </div>
+
+      <div class="app-card fade-up">
+        <div class="app-icon" style="background:linear-gradient(135deg,#14b8a6,#0d9488);">AC</div>
+        <div>
+          <div class="app-name">Android Clone</div>
+          <div class="app-version">3.0.4</div>
+        </div>
+        <div class="app-desc">Dual-space app cloner supporting 200+ popular apps. Run two instances of WhatsApp, Instagram, and games simultaneously.</div>
+        <a href="#" class="btn-download">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          Download APK
+        </a>
+      </div>
+
+      <div class="app-card fade-up">
+        <div class="app-icon" style="background:linear-gradient(135deg,#6366f1,#22d3ee);">VL</div>
+        <div>
+          <div class="app-name">VMOS Lite</div>
+          <div class="app-version">1.1.5</div>
+        </div>
+        <div class="app-desc">Lightweight version of VMOS with smaller footprint. Perfect for low-end devices requiring a virtual Android environment.</div>
+        <a href="#" class="btn-download">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          Download APK
+        </a>
+      </div>
+
+      <div class="app-card fade-up">
+        <div class="app-icon" style="background:linear-gradient(135deg,#ec4899,#db2777);">VX</div>
+        <div>
+          <div class="app-name">VirtualXposed</div>
+          <div class="app-version">0.21.1</div>
+        </div>
+        <div class="app-desc">Xposed Framework in a virtual environment — no root needed. Run Xposed modules, hooks, and patches safely in isolation.</div>
+        <a href="#" class="btn-download">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          Download APK
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ─── CUSTOM ROMs ─── -->
+<section class="roms-section" id="roms">
+  <div class="container">
+    <div class="roms-intro">
+      <div class="fade-up">
+        <span class="section-label">Custom ROMs</span>
+        <h2 class="section-title">Custom ROM Downloads</h2>
+        <p style="color:var(--muted);line-height:1.8;margin-bottom:20px;">
+          A <strong style="color:var(--text);">custom ROM</strong> is a modified version of the Android operating system built from the Android Open Source Project (AOSP). Custom ROMs unlock features blocked by manufacturers, eliminate bloatware, extend device life, and provide bleeding-edge Android versions for unsupported devices.
+        </p>
+        <p style="color:var(--muted);line-height:1.8;">
+          Whether you want the latest Android 14 features on an older device, enhanced performance, or a completely privacy-hardened OS — custom ROMs are the answer. Find download links, guides, and compatibility information for popular ROMs here.
+        </p>
+        <div class="about-tags" style="margin-top:24px;">
+          <span class="tag">LineageOS</span>
+          <span class="tag">PixelExperience</span>
+          <span class="tag">crDroid</span>
+          <span class="tag">ArrowOS</span>
+          <span class="tag">Evolution X</span>
+        </div>
+      </div>
+      <div class="rom-visual fade-up">
+        <div class="rom-visual-glow"></div>
+        <div class="rom-phone">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="android-logo">🤖</div>
+              <span style="color:#22d3ee;font-family:var(--font-display);font-weight:700;font-size:0.9rem;">Android 14</span>
+              <span style="color:var(--muted);font-size:0.7rem;">Custom ROM Active</span>
+              <div style="display:flex;gap:6px;margin-top:8px;">
+                <div style="width:8px;height:8px;border-radius:50%;background:#22d3ee;animation:pulse 1.5s infinite;"></div>
+                <div style="width:8px;height:8px;border-radius:50%;background:#6366f1;animation:pulse 1.5s 0.3s infinite;"></div>
+                <div style="width:8px;height:8px;border-radius:50%;background:#f59e0b;animation:pulse 1.5s 0.6s infinite;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top:20px;font-size:0.82rem;color:var(--muted);">Android 14 running on custom hardware via ROM</p>
+      </div>
+    </div>
+
+    <div class="rom-grid">
+      <div class="rom-card fade-up">
+        <div class="rom-badge">Stable</div>
+        <div class="rom-name">LineageOS 21</div>
+        <div class="rom-meta">
+          <div class="rom-meta-item"><span class="rom-meta-label">Device</span><span class="rom-meta-val">Xiaomi Redmi Note 10 Pro</span></div>
+          <div class="rom-meta-item"><span class="rom-meta-label">Android</span><span class="rom-meta-val">Android 14 (API 34)</span></div>
+          <div class="rom-meta-item"><span class="rom-meta-label">Size</span><span class="rom-meta-val">1.1 GB</span></div>
+        </div>
+        <a href="#" class="btn-download" style="border-color:rgba(245,158,11,0.35);color:#f59e0b;background:rgba(245,158,11,0.08);">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          Download ROM
+        </a>
+      </div>
+
+      <div class="rom-card fade-up">
+        <div class="rom-badge">Official</div>
+        <div class="rom-name">PixelExperience Plus</div>
+        <div class="rom-meta">
+          <div class="rom-meta-item"><span class="rom-meta-label">Device</span><span class="rom-meta-val">Samsung Galaxy S21</span></div>
+          <div class="rom-meta-item"><span class="rom-meta-label">Android</span><span class="rom-meta-val">Android 14</span></div>
+          <div class="rom-meta-item"><span class="rom-meta-label">Size</span><span class="rom-meta-val">1.5 GB</span></div>
+        </div>
+        <a href="#" class="btn-download" style="border-color:rgba(245,158,11,0.35);color:#f59e0b;background:rgba(245,158,11,0.08);">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          Download ROM
+        </a>
+      </div>
+
+      <div class="rom-card fade-up">
+        <div class="rom-badge" style="background:rgba(34,211,238,0.1);border-color:rgba(34,211,238,0.3);color:#22d3ee;">Beta</div>
+        <div class="rom-name">crDroid 10.x</div>
+        <div class="rom-meta">
+          <div class="rom-meta-item"><span class="rom-meta-label">Device</span><span class="rom-meta-val">OnePlus 9 / 9 Pro</span></div>
+          <div class="rom-meta-item"><span class="rom-meta-label">Android</span><span class="rom-meta-val">Android 14 AOSP</span></div>
+          <div class="rom-meta-item"><span class="rom-meta-label">Size</span><span class="rom-meta-val">940 MB</span></div>
+        </div>
+        <a href="#" class="btn-download" style="border-color:rgba(245,158,11,0.35);color:#f59e0b;background:rgba(245,158,11,0.08);">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          Download ROM
+        </a>
+      </div>
+
+      <div class="rom-card fade-up">
+        <div class="rom-badge">Stable</div>
+        <div class="rom-name">Evolution X 8.0</div>
+        <div class="rom-meta">
+          <div class="rom-meta-item"><span class="rom-meta-label">Device</span><span class="rom-meta-val">Poco F4 / Poco F5</span></div>
+          <div class="rom-meta-item"><span class="rom-meta-label">Android</span><span class="rom-meta-val">Android 13 / 14</span></div>
+          <div class="rom-meta-item"><span class="rom-meta-label">Size</span><span class="rom-meta-val">1.2 GB</span></div>
+        </div>
+        <a href="#" class="btn-download" style="border-color:rgba(245,158,11,0.35);color:#f59e0b;background:rgba(245,158,11,0.08);">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          Download ROM
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ─── WHY VIRTUAL ─── -->
+<section class="why-section" id="why">
+  <div class="container">
+    <div class="section-header centered fade-up">
+      <span class="section-label">Benefits</span>
+      <h2 class="section-title">Why Use Virtual Android?</h2>
+      <p class="section-sub">Android virtualization opens up new capabilities for users who want more control, safety, and flexibility without modifying their primary device.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon bi-1">👥</div>
+        <div class="benefit-text">
+          <h3>Run Multiple Accounts</h3>
+          <p>Use two or more accounts for WhatsApp, Instagram, PUBG, and other apps simultaneously — no need for a second device.</p>
+        </div>
+      </div>
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon bi-2">🧪</div>
+        <div class="benefit-text">
+          <h3>Test Apps Safely</h3>
+          <p>Install untrusted APKs, run experiments, or test mods in a completely isolated virtual environment without risking your real device.</p>
+        </div>
+      </div>
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon bi-3">🎮</div>
+        <div class="benefit-text">
+          <h3>Gaming Optimization</h3>
+          <p>Dedicated virtual instances for games allow better performance, separate game accounts, scripting support, and no interruptions from calls.</p>
+        </div>
+      </div>
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon bi-4">🔒</div>
+        <div class="benefit-text">
+          <h3>Privacy Isolation</h3>
+          <p>Keep your personal apps completely separate from work or social apps. No cross-app data sharing or tracking between instances.</p>
+        </div>
+      </div>
+      <div class="benefit-card fade-up">
+        <div class="benefit-icon bi-5">⚡</div>
+        <div class="benefit-text">
+          <h3>Root Simulation</h3>
+          <p>Get root access inside a virtual Android environment without rooting your actual device — keeping your warranty and security intact.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ─── HOW IT WORKS ─── -->
+<section class="how-section" id="how">
+  <div class="container">
+    <div class="section-header centered fade-up">
+      <span class="section-label">Process</span>
+      <h2 class="section-title">How ModFire Works</h2>
+      <p class="section-sub">Getting your virtual Android app or custom ROM is fast, simple, and safe with our 3-step process.</p>
+    </div>
+    <div class="steps-row">
+      <div class="step-card fade-up">
+        <div class="step-num">1</div>
+        <h3>Choose App or ROM</h3>
+        <p>Browse our curated collection of virtual Android apps and custom ROMs. Filter by device, Android version, or use case to find exactly what you need.</p>
+      </div>
+      <div class="step-card fade-up">
+        <div class="step-num">2</div>
+        <h3>Read the Guide</h3>
+        <p>Each app and ROM comes with detailed installation instructions, requirements, and tips. Our step-by-step guides ensure a smooth setup even for beginners.</p>
+      </div>
+      <div class="step-card fade-up">
+        <div class="step-num">3</div>
+        <h3>Download Safely</h3>
+        <p>All downloads are verified for safety. We scan APKs for malware and provide checksums for ROM files so you can verify integrity before installing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ─── ABOUT ─── -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="fade-up">
+        <span class="section-label">About Us</span>
+        <h2 class="section-title">Built for Android Power Users</h2>
+        <p style="color:var(--muted);margin-bottom:20px;line-height:1.8;">
+          ModFire.in was created with one mission: to be the most trusted, comprehensive resource for users who want to push Android beyond its default limits. Whether you're a developer testing multi-instance apps, a gamer seeking competitive advantages, or a power user installing custom ROMs — we've got you covered.
+        </p>
+        <p style="color:var(--muted);line-height:1.8;">
+          We believe in making advanced Android capabilities accessible. Every resource on ModFire is carefully curated, tested, and documented so you can explore virtual Android environments, modded tools, and custom ROM experiences with confidence.
+        </p>
+        <div class="about-tags">
+          <span class="tag">Virtual Android</span>
+          <span class="tag">Custom ROMs</span>
+          <span class="tag">Modded APKs</span>
+          <span class="tag">Multi-Instance</span>
+          <span class="tag">Root Tools</span>
+          <span class="tag">Xposed Modules</span>
+        </div>
+      </div>
+      <div class="about-accent-box fade-up">
+        <div class="about-highlight">100+</div>
+        <p style="color:var(--text);font-weight:600;margin-bottom:4px;">Apps, ROMs &amp; Guides</p>
+        <p>All verified, documented, and updated regularly by our team of Android enthusiasts.</p>
+        <div style="margin-top:28px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.08);">
+          <div style="display:flex;gap:24px;flex-wrap:wrap;">
+            <div>
+              <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:#22d3ee;">50K+</div>
+              <div style="font-size:0.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.6px;">Downloads</div>
+            </div>
+            <div>
+              <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:#f59e0b;">40+</div>
+              <div style="font-size:0.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.6px;">Devices Supported</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ─── SEO CONTENT ─── -->
+<section class="seo-section">
+  <div class="container">
+    <div class="seo-content fade-up">
+      <h2>Android Virtualization &amp; Custom ROM — Complete Resource Guide</h2>
+      <p>
+        ModFire.in is your go-to platform for everything related to <strong>virtual Android apps</strong>, <strong>android clone apps</strong>, and <strong>custom ROM download</strong> resources. Android virtualization has become essential for power users who need multi-instance Android environments for gaming, development, and privacy-focused workflows.
+      </p>
+      <p>
+        The rise of <strong>multi instance Android</strong> tools has made it possible to run multiple Android environments on a single device. Apps like VMOS Pro, VPhoneGaGa, and x8 Sandbox leverage <strong>android virtualization</strong> technology to create isolated containers that behave like independent Android devices — complete with their own storage, accounts, and root access.
+      </p>
+      <p>
+        For users seeking <strong>custom ROM download</strong> options, platforms like LineageOS, PixelExperience, and crDroid offer community-built Android versions based on AOSP that bring new features, performance improvements, and extended device support to older hardware. These <strong>modded android tools</strong> represent years of community development and give users full control over their Android experience.
+      </p>
+      <p>
+        Whether you're looking for a <strong>virtual machine android</strong> solution for app testing, a cloning app for dual WhatsApp accounts, or a custom ROM to breathe new life into an old device — ModFire provides verified downloads, detailed guides, and the community knowledge to get started safely.
+      </p>
+      <div class="seo-keywords">
+        <span class="keyword-tag">virtual android apps</span>
+        <span class="keyword-tag">android clone apps</span>
+        <span class="keyword-tag">custom rom download</span>
+        <span class="keyword-tag">android virtualization</span>
+        <span class="keyword-tag">modded android tools</span>
+        <span class="keyword-tag">multi instance android</span>
+        <span class="keyword-tag">virtual machine android</span>
+        <span class="keyword-tag">VMOS Pro download</span>
+        <span class="keyword-tag">VPhoneGaGa APK</span>
+        <span class="keyword-tag">LineageOS download</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ─── FAQ ─── -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="section-header centered fade-up">
+      <span class="section-label">FAQ</span>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-sub">Got questions? Here are the most common things users ask about virtual Android apps and custom ROMs.</p>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q">Are the APKs on ModFire safe to download?<span class="faq-icon">+</span></div>
+        <div class="faq-divider"></div>
+        <div class="faq-a">Yes. Every APK listed on ModFire.in is scanned for malware using multiple antivirus engines before being published. We also provide SHA256 checksums so you can verify file integrity. However, we always recommend downloading from official sources first, and using our listings as supplementary guides.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Do virtual Android apps work on all devices?<span class="faq-icon">+</span></div>
+        <div class="faq-divider"></div>
+        <div class="faq-a">Virtual Android apps generally require Android 5.0 or higher. Performance is best on devices with 4GB+ RAM and a modern processor. Some apps like VMOS Pro use virtualization extensions that may not be available on all chipsets. Always check the compatibility requirements on each app's page before downloading.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Do I need to root my device to use virtual Android apps?<span class="faq-icon">+</span></div>
+        <div class="faq-divider"></div>
+        <div class="faq-a">No — most virtual Android apps like VMOS Pro, Twoyi, and VirtualXposed work without root on your main device. The virtual environment itself can have root access enabled independently. This is one of the biggest advantages: root features inside the VM without compromising your real device's security.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How do I install a Custom ROM?<span class="faq-icon">+</span></div>
+        <div class="faq-divider"></div>
+        <div class="faq-a">Installing a custom ROM requires: (1) unlocking your device's bootloader, (2) installing a custom recovery like TWRP, (3) backing up your data, and (4) flashing the ROM zip through recovery. Each ROM page on ModFire includes device-specific installation guides. Be sure to match the ROM exactly to your device model number.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Will installing a custom ROM void my warranty?<span class="faq-icon">+</span></div>
+        <div class="faq-divider"></div>
+        <div class="faq-a">Typically yes — unlocking the bootloader and flashing custom software voids the manufacturer warranty on most devices. However, some devices and regions have exceptions. Custom ROMs also typically cannot be tracked by manufacturers after flashing. Always research your specific device and regional warranty policies before proceeding.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Can I run virtual Android apps on iOS?<span class="faq-icon">+</span></div>
+        <div class="faq-divider"></div>
+        <div class="faq-a">No — virtual Android apps are exclusively for Android devices. iOS has a completely different architecture and app ecosystem that does not support Android virtualization. For iOS users looking to run Android apps, the only alternative is using Android Studio emulator on a desktop computer.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Do virtual Android apps affect device performance?<span class="faq-icon">+</span></div>
+        <div class="faq-divider"></div>
+        <div class="faq-a">Running a virtual Android environment does consume additional RAM and CPU resources. On mid-to-high-end devices, the impact is minimal. On devices with less than 3GB RAM, you may experience slowdowns. Apps like VMOS Lite are specifically optimized for low-end devices to minimize performance impact.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">MODFIRE.IN</a>
+        <p>Your trusted hub for virtual Android apps, custom ROMs, and modded APKs. Helping Android power users, modders, and gamers since 2023.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Telegram">✈</a>
+          <a href="#" class="social-link" aria-label="YouTube">▶</a>
+          <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+          <a href="#" class="social-link" aria-label="GitHub">⌥</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Virtual Apps</h4>
+        <ul>
+          <li><a href="#">VMOS Pro</a></li>
+          <li><a href="#">VPhoneGaGa</a></li>
+          <li><a href="#">x8 Sandbox</a></li>
+          <li><a href="#">Twoyi</a></li>
+          <li><a href="#">VirtualXposed</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Custom ROMs</h4>
+        <ul>
+          <li><a href="#">LineageOS</a></li>
+          <li><a href="#">PixelExperience</a></li>
+          <li><a href="#">crDroid</a></li>
+          <li><a href="#">Evolution X</a></li>
+          <li><a href="#">ArrowOS</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#apps">All Apps</a></li>
+          <li><a href="#roms">ROM List</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="mailto:hello@modfire.in">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        &copy; 2024 ModFire.in — All rights reserved.<br>
+        <span style="font-size:0.75rem;">Contact: <a href="mailto:hello@modfire.in" style="color:var(--accent);text-decoration:none;">hello@modfire.in</a></span>
+      </div>
+      <div class="footer-disclaimer">
+        <strong>⚠ Educational Disclaimer</strong>
+        All content on ModFire.in is provided for educational and informational purposes only. Users are responsible for ensuring their use of virtual Android apps and custom ROMs complies with applicable laws and terms of service in their region. ModFire.in does not host copyrighted software and links only to official or open-source distributions.
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Navbar scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+
+function closeMobileMenu() {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+}
+
+// Intersection Observer for fade-up animations
+const fadeEls = document.querySelectorAll('.fade-up');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+fadeEls.forEach(el => observer.observe(el));
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+
+</body>
+</html>
